@@ -84,7 +84,7 @@ COMMENT ON COLUMN lottery.pool.auto_create IS '为 true 时,奖池被切换后�
 COMMENT ON COLUMN lottery.pool.created_at IS '创建时间';
 COMMENT ON COLUMN lottery.pool.updated_at IS '更新时间';
 COMMENT ON COLUMN lottery.pool.priority IS '奖池优先级(priority=0时,conditions无效)';
-COMMENT ON COLUMN lottery.pool.conditions IS 'JSONB 格式的进入条件,例如：{"type":"LEVEL","min":5,"max":100} {"type":"PROFIT","min":-1000,"max":1000} {"type":"WHITELIST","users":[123,456]}';
+COMMENT ON COLUMN lottery.pool.conditions IS 'JSONB 格式的进入条件,例如:{"type":"LEVEL","min":5,"max":100} {"type":"PROFIT","min":-1000,"max":1000} {"type":"WHITELIST","users":[123,456]}';
 
 
 CREATE TABLE lottery.pool_prize (
@@ -101,7 +101,7 @@ COMMENT ON TABLE lottery.pool_prize IS '奖池内奖品配置明细';
 COMMENT ON COLUMN lottery.pool_prize.pool_id IS '奖池 ID';
 COMMENT ON COLUMN lottery.pool_prize.prize_id IS '奖品 ID';
 COMMENT ON COLUMN lottery.pool_prize.quantity IS '该奖品在本奖池中的数量';
-COMMENT ON COLUMN lottery.pool_prize."position" IS '奖品在序列中的固定位置：0=随机,正数=顺序第 N,负数=倒数第 N；固定位置时 quantity 必须为 1';
+COMMENT ON COLUMN lottery.pool_prize."position" IS '奖品在序列中的固定位置:0=随机,正数=顺序第 N,负数=倒数第 N；固定位置时 quantity 必须为 1';
 COMMENT ON COLUMN lottery.pool_prize.created_at IS '创建时间';
 COMMENT ON COLUMN lottery.pool_prize.updated_at IS '更新时间';
 
@@ -177,7 +177,7 @@ CREATE TABLE lottery.prize (
 COMMENT ON TABLE lottery.prize IS '奖品(礼物)字典表';
 COMMENT ON COLUMN lottery.prize.id IS '奖品唯一标识';
 COMMENT ON COLUMN lottery.prize.name IS '奖品名称';
-COMMENT ON COLUMN lottery.prize.value IS '奖品价值(单位：平台币)';
+COMMENT ON COLUMN lottery.prize.value IS '奖品价值(单位:平台币)';
 COMMENT ON COLUMN lottery.prize.type IS '奖品类型枚举,见 prize_type_enum';
 COMMENT ON COLUMN lottery.prize.broadcast IS '中奖后广播级别枚举';
 COMMENT ON COLUMN lottery.prize.is_enabled IS '是否启用,false 时不可再被配置进奖池';
@@ -193,7 +193,7 @@ CREATE TABLE lottery.user_backpack (
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
     CONSTRAINT user_backpack_quantity_check CHECK ((quantity >= 0))
 );
-COMMENT ON TABLE lottery.user_backpack IS '用户背包：持有奖品及数量';
+COMMENT ON TABLE lottery.user_backpack IS '用户背包:持有奖品及数量';
 COMMENT ON COLUMN lottery.user_backpack.user_id IS '用户 ID';
 COMMENT ON COLUMN lottery.user_backpack.prize_id IS '奖品 ID';
 COMMENT ON COLUMN lottery.user_backpack.quantity IS '剩余数量';
